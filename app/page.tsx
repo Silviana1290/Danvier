@@ -215,9 +215,17 @@ export default function ManufacturingPredictionForm() {
               <Factory className="h-8 w-8" />
               Prediksi Performa Industri Manufaktur
             </h1>
-            <p className="text-lg opacity-90 mb-4">
+            <p className="text-lg opacity-90 mb-2">
               Sistem Prediksi Berbasis Machine Learning untuk Analisis Performa Manufaktur
             </p>
+            <div className="text-sm opacity-80 mb-4">
+              <p className="font-semibold mb-2">Oleh Kelompok 3 Kelas D:</p>
+              <div className="space-y-1">
+                <p>1. Rofi Barbie Silviana Putri</p>
+                <p>2. Olivia Glorya Velty Solossa</p>
+                <p>3. Putriani Sari Rejeki Jae</p>
+              </div>
+            </div>
             <Button
               onClick={() => setShowHelp(true)}
               variant="outline"
