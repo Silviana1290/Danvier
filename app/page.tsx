@@ -828,9 +828,9 @@ export default function ManufacturingPredictionForm() {
 
 function HelpContent() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Quick Start Guide */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
         <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
           🚀 Panduan Cepat - 5 Langkah Mudah
         </h3>
@@ -862,12 +862,15 @@ function HelpContent() {
               desc: "Tekan tombol 'Prediksi Performa' dan lihat hasil analisis",
             },
           ].map((item) => (
-            <div key={item.step} className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
-              <div className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+            <div
+              key={item.step}
+              className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm border border-gray-100"
+            >
+              <div className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
                 {item.step}
               </div>
-              <div>
-                <h4 className="font-semibold text-slate-800">{item.title}</h4>
+              <div className="flex-1">
+                <h4 className="font-semibold text-slate-800 mb-1">{item.title}</h4>
                 <p className="text-slate-600 text-sm">{item.desc}</p>
               </div>
             </div>
@@ -875,87 +878,626 @@ function HelpContent() {
         </div>
       </div>
 
-      {/* Field Explanations */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Company Information Section */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-blue-300 pb-2">
+          <Factory className="h-5 w-5 text-blue-600" />📊 Informasi Perusahaan
+        </h3>
         <div className="space-y-4">
-          <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-            <Factory className="h-5 w-5" />
-            Informasi Perusahaan
-          </h3>
-          <div className="space-y-3">
-            <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-              <h4 className="font-semibold text-slate-800">🏢 Nama Perusahaan *</h4>
-              <p className="text-sm text-slate-600">Masukkan nama lengkap perusahaan manufaktur Anda.</p>
-              <div className="mt-2 p-2 bg-green-100 rounded text-xs font-mono">
-                Contoh: PT Industri Manufaktur Indonesia
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              🏢 Nama Perusahaan{" "}
+              <Badge variant="destructive" className="text-xs">
+                WAJIB
+              </Badge>
+            </h4>
+            <p className="text-slate-600 mb-3">Masukkan nama lengkap perusahaan manufaktur Anda.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-green-800">
+                PT Industri Manufaktur Indonesia
+                <br />
+                CV Karya Mandiri Sejahtera
+                <br />
+                UD Maju Bersama
               </div>
             </div>
-            <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-              <h4 className="font-semibold text-slate-800">🏭 Jenis Industri *</h4>
-              <p className="text-sm text-slate-600">Pilih kategori yang paling sesuai dengan bisnis Anda.</p>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              🏭 Jenis Industri{" "}
+              <Badge variant="destructive" className="text-xs">
+                WAJIB
+              </Badge>
+            </h4>
+            <p className="text-slate-600 mb-3">Pilih kategori industri yang paling sesuai dengan bisnis Anda.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Pilihan yang tersedia:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Otomotif:</strong> Mobil, motor, suku cadang
+                </li>
+                <li>
+                  • <strong>Elektronik:</strong> Komputer, smartphone, peralatan elektronik
+                </li>
+                <li>
+                  • <strong>Tekstil:</strong> Pakaian, kain, produk tekstil
+                </li>
+                <li>
+                  • <strong>Makanan & Minuman:</strong> Pengolahan makanan, minuman
+                </li>
+                <li>
+                  • <strong>Kimia:</strong> Bahan kimia, farmasi, kosmetik
+                </li>
+                <li>
+                  • <strong>Mesin & Peralatan:</strong> Mesin industri, alat berat
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">👥 Ukuran Perusahaan</h4>
+            <p className="text-slate-600 mb-3">Klasifikasi berdasarkan jumlah karyawan.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Kategori:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Kecil:</strong> Kurang dari 50 karyawan
+                </li>
+                <li>
+                  • <strong>Menengah:</strong> 50-250 karyawan
+                </li>
+                <li>
+                  • <strong>Besar:</strong> Lebih dari 250 karyawan
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">📅 Tahun Beroperasi</h4>
+            <p className="text-slate-600 mb-3">Berapa lama perusahaan telah beroperasi (dalam tahun).</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-green-800">
+                Jika perusahaan didirikan tahun 2015, maka di tahun 2024 = 9 tahun
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
+      {/* Production Metrics Section */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-blue-300 pb-2">
+          <TrendingUp className="h-5 w-5 text-blue-600" />🏭 Metrik Produksi
+        </h3>
         <div className="space-y-4">
-          <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-            <TrendingUp className="h-5 w-5" />
-            Metrik Produksi
-          </h3>
-          <div className="space-y-3">
-            <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-              <h4 className="font-semibold text-slate-800">📦 Output Bulanan *</h4>
-              <p className="text-sm text-slate-600">Jumlah produk yang berhasil diproduksi dalam satu bulan.</p>
-              <div className="mt-2 p-2 bg-green-100 rounded text-xs font-mono">Contoh: 5000 unit/bulan</div>
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              📦 Output Bulanan{" "}
+              <Badge variant="destructive" className="text-xs">
+                WAJIB
+              </Badge>
+            </h4>
+            <p className="text-slate-600 mb-3">Jumlah produk yang berhasil diproduksi dalam satu bulan (dalam unit).</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-green-800">
+                • Pabrik sepatu: 5000 pasang/bulan
+                <br />• Pabrik elektronik: 1200 unit/bulan
+                <br />• Pabrik makanan: 50000 kemasan/bulan
+              </div>
             </div>
-            <div className="p-3 bg-cyan-50 rounded-lg border-l-4 border-cyan-500">
-              <h4 className="font-semibold text-slate-800">📊 Utilisasi Kapasitas (Otomatis)</h4>
-              <p className="text-sm text-slate-600">Dihitung otomatis: (Output ÷ Kapasitas) × 100%</p>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+              🎯 Kapasitas Produksi{" "}
+              <Badge variant="destructive" className="text-xs">
+                WAJIB
+              </Badge>
+            </h4>
+            <p className="text-slate-600 mb-3">
+              Maksimum produk yang dapat diproduksi dalam satu bulan jika beroperasi penuh.
+            </p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Cara menghitung:</div>
+              <div className="font-mono text-sm text-green-800">
+                Kapasitas mesin × Jam operasi × Hari kerja
+                <br />
+                Contoh: 100 unit/jam × 8 jam × 25 hari = 20.000 unit/bulan
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-cyan-50 rounded-lg border-l-4 border-cyan-500">
+            <h4 className="font-bold text-slate-800 mb-2">📊 Utilisasi Kapasitas (Otomatis)</h4>
+            <div className="bg-yellow-50 p-3 rounded border-l-3 border-yellow-500 mb-3">
+              <div className="font-mono text-sm text-yellow-800">
+                Utilisasi = (Output Bulanan ÷ Kapasitas Produksi) × 100%
+              </div>
+            </div>
+            <p className="text-slate-600">
+              Field ini akan terisi otomatis saat Anda mengisi Output Bulanan dan Kapasitas Produksi.
+            </p>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">⚡ Efisiensi Produksi</h4>
+            <p className="text-slate-600 mb-3">Persentase efektivitas proses produksi dibandingkan standar ideal.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Cara menghitung:</div>
+              <div className="font-mono text-sm text-green-800">
+                (Waktu Standar ÷ Waktu Aktual) × 100%
+                <br />
+                Contoh: Standar 60 menit, aktual 75 menit = 80% efisiensi
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+          <h4 className="font-bold text-yellow-800 mb-2 flex items-center gap-2">💡 Tips Mengisi Metrik Produksi</h4>
+          <ul className="text-sm text-yellow-800 space-y-1">
+            <li>• Gunakan data rata-rata 3-6 bulan terakhir untuk akurasi yang lebih baik</li>
+            <li>• Pastikan satuan unit konsisten (pieces, kg, liter, dll)</li>
+            <li>• Jika produk beragam, konversi ke unit standar atau gunakan nilai produksi</li>
+            <li>• Utilisasi kapasitas yang baik umumnya 70-85%</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Quality Metrics Section */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-blue-300 pb-2">
+          <CheckCircle2 className="h-5 w-5 text-blue-600" />✅ Metrik Kualitas
+        </h3>
+        <div className="space-y-4">
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">❌ Tingkat Cacat</h4>
+            <p className="text-slate-600 mb-3">Persentase produk cacat dari total produksi.</p>
+            <div className="bg-yellow-50 p-3 rounded border-l-3 border-yellow-500 mb-2">
+              <div className="font-mono text-sm text-yellow-800">(Jumlah Produk Cacat ÷ Total Produksi) × 100%</div>
+            </div>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-green-800">50 cacat dari 10.000 produk = 0.5%</div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">🔄 Tingkat Pengerjaan Ulang</h4>
+            <p className="text-slate-600 mb-3">Persentase produk yang perlu dikerjakan ulang untuk memenuhi standar.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-green-800">Dari 1000 produk, 30 perlu rework = 3%</div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">😊 Kepuasan Pelanggan</h4>
+            <p className="text-slate-600 mb-3">Rating kepuasan pelanggan dalam skala 1-10.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Sumber data:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Survey kepuasan pelanggan</li>
+                <li>• Review online</li>
+                <li>• Feedback langsung</li>
+                <li>• Rating aplikasi/website</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">↩️ Tingkat Pengembalian</h4>
+            <p className="text-slate-600 mb-3">Persentase produk yang dikembalikan oleh pelanggan.</p>
+            <div className="bg-yellow-50 p-3 rounded border-l-3 border-yellow-500">
+              <div className="text-sm font-semibold text-yellow-700 mb-1">Rumus:</div>
+              <div className="font-mono text-sm text-yellow-800">(Produk Dikembalikan ÷ Total Penjualan) × 100%</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-red-50 p-4 rounded-lg border border-red-200">
+          <h4 className="font-bold text-red-800 mb-2 flex items-center gap-2">⚠️ Standar Industri</h4>
+          <div className="text-sm text-red-800 space-y-1">
+            <p>
+              <strong>Tingkat Cacat:</strong> &lt; 1% (sangat baik), 1-3% (baik), &gt; 5% (perlu perbaikan)
+            </p>
+            <p>
+              <strong>Kepuasan Pelanggan:</strong> &gt; 8.0 (excellent), 7.0-8.0 (good), &lt; 7.0 (needs improvement)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Financial Metrics Section */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-blue-300 pb-2">
+          <DollarSign className="h-5 w-5 text-blue-600" />💰 Metrik Finansial
+        </h3>
+        <div className="space-y-4">
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">💵 Pendapatan Bulanan</h4>
+            <p className="text-slate-600 mb-3">
+              Total pendapatan kotor dari penjualan produk dalam satu bulan (dalam Rupiah).
+            </p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-green-800">Penjualan 1000 unit × Rp 500.000 = Rp 500.000.000</div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">🏭 Biaya Produksi</h4>
+            <p className="text-slate-600 mb-3">
+              Total biaya untuk memproduksi barang (bahan baku, tenaga kerja langsung, overhead pabrik).
+            </p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Komponen biaya:</div>
+              <div className="font-mono text-sm text-green-800">
+                • Bahan baku: Rp 200.000.000
+                <br />• Tenaga kerja: Rp 100.000.000
+                <br />• Overhead pabrik: Rp 50.000.000
+                <br />
+                <strong>Total: Rp 350.000.000</strong>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">📈 Margin Keuntungan</h4>
+            <p className="text-slate-600 mb-3">Persentase keuntungan dari pendapatan.</p>
+            <div className="bg-yellow-50 p-4 rounded border-l-3 border-yellow-500 mb-3">
+              <div className="font-mono text-sm text-yellow-800 mb-2">
+                Margin = ((Pendapatan - Total Biaya) ÷ Pendapatan) × 100%
+              </div>
+              <div className="text-sm font-semibold text-yellow-700 mb-1">Contoh:</div>
+              <div className="font-mono text-sm text-yellow-800">
+                Pendapatan: Rp 500 juta, Biaya: Rp 400 juta
+                <br />
+                Margin = ((500-400) ÷ 500) × 100% = 20%
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">⚙️ Biaya Operasional</h4>
+            <p className="text-slate-600 mb-3">
+              Biaya untuk menjalankan operasi sehari-hari (listrik, maintenance, administrasi).
+            </p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Termasuk:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Listrik dan utilitas</li>
+                <li>• Maintenance mesin</li>
+                <li>• Gaji staff administrasi</li>
+                <li>• Biaya logistik</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+          <h4 className="font-bold text-yellow-800 mb-2 flex items-center gap-2">💡 Tips Finansial</h4>
+          <ul className="text-sm text-yellow-800 space-y-1">
+            <li>• Gunakan data dari laporan keuangan bulanan</li>
+            <li>• Pastikan semua biaya sudah termasuk (jangan ada yang terlewat)</li>
+            <li>• Margin keuntungan industri manufaktur umumnya 10-25%</li>
+            <li>• Bandingkan dengan periode sebelumnya untuk melihat tren</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Operational Metrics Section */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-blue-300 pb-2">
+          <Settings className="h-5 w-5 text-blue-600" />
+          ⚙️ Metrik Operasional
+        </h3>
+        <div className="space-y-4">
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">👥 Jumlah Karyawan</h4>
+            <p className="text-slate-600 mb-3">Total karyawan yang terlibat dalam proses produksi.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Termasuk:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Operator mesin</li>
+                <li>• Supervisor produksi</li>
+                <li>• Quality control</li>
+                <li>• Maintenance staff</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">🕐 Jam Operasi Mesin</h4>
+            <p className="text-slate-600 mb-3">Rata-rata jam operasi mesin per hari.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Contoh:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Shift tunggal: 8 jam/hari</li>
+                <li>• Shift ganda: 16 jam/hari</li>
+                <li>• Operasi 24 jam: 24 jam/hari</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">⏸️ Waktu Henti (Downtime)</h4>
+            <p className="text-slate-600 mb-3">Total waktu mesin tidak beroperasi dalam satu bulan (jam).</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Penyebab downtime:</div>
+              <div className="font-mono text-sm text-green-800">
+                • Maintenance terjadwal: 20 jam
+                <br />• Kerusakan mesin: 15 jam
+                <br />• Pergantian produk: 10 jam
+                <br />
+                <strong>Total: 45 jam/bulan</strong>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">🔧 Frekuensi Maintenance</h4>
+            <p className="text-slate-600 mb-3">Seberapa sering maintenance rutin dilakukan.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Rekomendasi:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Harian:</strong> Mesin kritis/presisi tinggi
+                </li>
+                <li>
+                  • <strong>Mingguan:</strong> Mesin produksi utama
+                </li>
+                <li>
+                  • <strong>Bulanan:</strong> Mesin pendukung
+                </li>
+                <li>
+                  • <strong>Triwulan:</strong> Peralatan non-kritis
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 bg-cyan-50 p-4 rounded-lg border border-cyan-200">
+          <h4 className="font-bold text-cyan-800 mb-2">📊 OEE (Overall Equipment Effectiveness)</h4>
+          <div className="bg-white p-3 rounded border-l-3 border-cyan-500 mb-2">
+            <div className="font-mono text-sm text-cyan-800">
+              OEE = Availability × Performance × Quality
+              <br />
+              Availability = (Jam Operasi - Downtime) ÷ Jam Operasi
+            </div>
+          </div>
+          <p className="text-sm text-cyan-800">OEE yang baik umumnya &gt; 85%</p>
+        </div>
+      </div>
+
+      {/* External Factors Section */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-blue-300 pb-2">
+          <Globe className="h-5 w-5 text-blue-600" />🌍 Faktor Eksternal
+        </h3>
+        <div className="space-y-4">
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">📊 Permintaan Pasar</h4>
+            <p className="text-slate-600 mb-3">Tingkat permintaan produk Anda di pasar saat ini.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Indikator:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Sangat Tinggi:</strong> Order melebihi kapasitas
+                </li>
+                <li>
+                  • <strong>Tinggi:</strong> Order mendekati kapasitas
+                </li>
+                <li>
+                  • <strong>Sedang:</strong> Order 60-80% kapasitas
+                </li>
+                <li>
+                  • <strong>Rendah:</strong> Order &lt; 60% kapasitas
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">🏆 Tingkat Kompetisi</h4>
+            <p className="text-slate-600 mb-3">Seberapa ketat persaingan di industri Anda.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Penilaian:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Sangat Tinggi:</strong> &gt; 10 kompetitor utama
+                </li>
+                <li>
+                  • <strong>Tinggi:</strong> 5-10 kompetitor
+                </li>
+                <li>
+                  • <strong>Sedang:</strong> 3-5 kompetitor
+                </li>
+                <li>
+                  • <strong>Rendah:</strong> &lt; 3 kompetitor
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">📈 Kondisi Ekonomi</h4>
+            <p className="text-slate-600 mb-3">Kondisi ekonomi makro yang mempengaruhi bisnis.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Indikator:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Boom:</strong> Pertumbuhan ekonomi &gt; 6%
+                </li>
+                <li>
+                  • <strong>Pertumbuhan:</strong> 3-6%
+                </li>
+                <li>
+                  • <strong>Stabil:</strong> 1-3%
+                </li>
+                <li>
+                  • <strong>Lambat:</strong> 0-1%
+                </li>
+                <li>
+                  • <strong>Resesi:</strong> Pertumbuhan negatif
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold text-slate-800 mb-2">🌤️ Faktor Musiman</h4>
+            <p className="text-slate-600 mb-3">Seberapa besar pengaruh musim terhadap penjualan produk.</p>
+            <div className="bg-green-50 p-3 rounded border-l-3 border-green-500">
+              <div className="text-sm font-semibold text-green-700 mb-2">Contoh:</div>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>
+                  • <strong>Sangat Tinggi:</strong> Produk lebaran, natal
+                </li>
+                <li>
+                  • <strong>Tinggi:</strong> Pakaian, mainan
+                </li>
+                <li>
+                  • <strong>Sedang:</strong> Makanan tertentu
+                </li>
+                <li>
+                  • <strong>Rendah:</strong> Produk kebutuhan sehari-hari
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Tips */}
-      <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-        <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">💡 Tips Penting</h3>
+      {/* Tips & Important Information */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+          <h3 className="text-lg font-bold text-yellow-800 mb-4 flex items-center gap-2">🎯 Tips Akurasi Data</h3>
+          <ul className="text-sm text-yellow-800 space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="text-yellow-600 mt-1">•</span>
+              <span>Gunakan data aktual dari sistem ERP atau laporan resmi</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-yellow-600 mt-1">•</span>
+              <span>Ambil rata-rata 3-6 bulan untuk menghindari fluktuasi</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-yellow-600 mt-1">•</span>
+              <span>Pastikan konsistensi satuan dan periode waktu</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-yellow-600 mt-1">•</span>
+              <span>Verifikasi data dengan departemen terkait</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-yellow-600 mt-1">•</span>
+              <span>Dokumentasikan sumber data untuk referensi</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+          <h3 className="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2">⚡ Tips Efisiensi</h3>
+          <ul className="text-sm text-blue-800 space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 mt-1">•</span>
+              <span>Siapkan semua data sebelum mulai mengisi form</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 mt-1">•</span>
+              <span>Isi field wajib (bertanda *) terlebih dahulu</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 mt-1">•</span>
+              <span>Gunakan fitur auto-calculation untuk field yang tersedia</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 mt-1">•</span>
+              <span>Simpan draft secara berkala jika form panjang</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 mt-1">•</span>
+              <span>Gunakan template untuk pengisian rutin</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Common Mistakes */}
+      <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+        <h3 className="text-lg font-bold text-red-800 mb-4 flex items-center gap-2">
+          ⚠️ Kesalahan Umum yang Harus Dihindari
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <h4 className="font-semibold text-slate-800 mb-2">🎯 Akurasi Data</h4>
-            <ul className="text-sm text-slate-600 space-y-1">
-              <li>• Gunakan data aktual dari sistem ERP</li>
-              <li>• Ambil rata-rata 3-6 bulan</li>
-              <li>• Pastikan konsistensi satuan</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-slate-800 mb-2">⚠️ Hindari Kesalahan</h4>
-            <ul className="text-sm text-slate-600 space-y-1">
-              <li>• Jangan campur data periode berbeda</li>
-              <li>• Verifikasi perhitungan manual</li>
-              <li>• Isi field wajib terlebih dahulu</li>
-            </ul>
-          </div>
+          <ul className="text-sm text-red-800 space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 mt-1">❌</span>
+              <span>Mencampur data dari periode yang berbeda</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 mt-1">❌</span>
+              <span>Menggunakan data perkiraan tanpa basis yang jelas</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 mt-1">❌</span>
+              <span>Mengabaikan field opsional yang relevan</span>
+            </li>
+          </ul>
+          <ul className="text-sm text-red-800 space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 mt-1">❌</span>
+              <span>Tidak memverifikasi perhitungan manual</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 mt-1">❌</span>
+              <span>Mengisi data yang tidak konsisten antar field</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 mt-1">❌</span>
+              <span>Mengabaikan faktor eksternal yang penting</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      {/* Checklist */}
-      <div className="bg-slate-50 p-6 rounded-lg">
-        <h3 className="text-lg font-bold text-slate-800 mb-4">📋 Checklist Sebelum Submit</h3>
-        <div className="space-y-2">
+      {/* Final Checklist */}
+      <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+        <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">📋 Checklist Sebelum Submit</h3>
+        <div className="space-y-3">
           {[
             "Semua field wajib sudah terisi",
             "Data finansial sudah diverifikasi",
             "Perhitungan persentase sudah benar",
             "Satuan dan periode waktu konsisten",
             "Data eksternal sudah disesuaikan dengan kondisi terkini",
+            "Catatan tambahan sudah diisi jika diperlukan",
           ].map((item, index) => (
-            <div key={index} className="flex items-center gap-3 p-2 bg-white rounded">
-              <CheckCircle2 className="h-4 w-4 text-green-600" />
+            <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-100">
+              <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
               <span className="text-sm text-slate-700">{item}</span>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Ready to Start */}
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200 text-center">
+        <h3 className="text-xl font-bold text-slate-800 mb-3 flex items-center justify-center gap-2">🚀 Siap Mulai?</h3>
+        <p className="text-slate-600 mb-4">
+          Setelah membaca panduan ini, Anda sudah siap mengisi form prediksi performa manufaktur. Ingat, semakin akurat
+          data yang Anda masukkan, semakin akurat pula hasil prediksi yang akan diperoleh.
+        </p>
+        <p className="text-lg font-semibold text-slate-800">
+          <strong>Selamat menganalisis performa manufaktur Anda! 🎉</strong>
+        </p>
       </div>
     </div>
   )
